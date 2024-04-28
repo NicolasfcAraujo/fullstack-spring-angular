@@ -32,8 +32,4 @@ public class User {
     private String department;
     @Enumerated(EnumType.STRING)
     private UserType type;
-
-    @OneToMany(mappedBy = "user")
-    @JoinColumn(name = "user_id")
-    private List<TimeRegister> timeRegisters;
 }
