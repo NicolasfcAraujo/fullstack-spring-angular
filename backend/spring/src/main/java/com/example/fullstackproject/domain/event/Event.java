@@ -20,7 +20,9 @@ public class Event {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     private String title;
+    @Column(name = "event_start")
     private LocalDateTime start;
+    @Column(name = "event_end")
     private LocalDateTime end;
     @ManyToOne
     @JoinColumn(name = "organizer_id")
