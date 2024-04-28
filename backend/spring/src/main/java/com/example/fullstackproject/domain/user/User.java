@@ -1,11 +1,13 @@
 package com.example.fullstackproject.domain.user;
 
+import com.example.fullstackproject.domain.timeregister.TimeRegister;
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 @Entity(name = "users")
@@ -15,7 +17,7 @@ import java.util.UUID;
 @EqualsAndHashCode(of = "id")
 public class User {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     @Column(name = "created_at")
     private LocalDateTime createdAt;
@@ -30,4 +32,8 @@ public class User {
     private String department;
     @Enumerated(EnumType.STRING)
     private UserType type;
+
+    @OneToMany(mappedBy = "user")
+    @JoinColumn(name = "user_id")
+    private List<TimeRegister> timeRegisters;
 }
