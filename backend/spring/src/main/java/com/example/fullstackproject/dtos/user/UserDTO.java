@@ -1,4 +1,4 @@
-package com.example.fullstackproject.dtos;
+package com.example.fullstackproject.dtos.user;
 
 import com.example.fullstackproject.domain.user.UserType;
 
