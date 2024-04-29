@@ -21,12 +21,12 @@ public class Event {
     private UUID id;
     private String title;
     @Column(name = "event_start")
-    private LocalDateTime start;
+    private LocalDateTime eventStart;
     @Column(name = "event_end")
-    private LocalDateTime end;
+    private LocalDateTime eventEnd;
     @ManyToOne
-    @JoinColumn(name = "organizer_id")
-    private User organizer;
+    @JoinColumn(name = "host_id")
+    private User host;
 
     @ManyToMany
     @JoinTable(
