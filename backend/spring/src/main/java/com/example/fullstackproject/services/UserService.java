@@ -4,6 +4,7 @@ import com.example.fullstackproject.domain.user.User;
 import com.example.fullstackproject.dtos.user.UserDTO;
 import com.example.fullstackproject.dtos.user.UserSummaryDTO;
 import com.example.fullstackproject.repositories.UserRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,11 +25,11 @@ public class UserService {
         return userRepository.getAllUsersSummaries();
     }
 
-    public User findUserById(UUID id) throws Exception {
+    public User findUserById(UUID id) throws EntityNotFoundException {
         Optional<User> checkedUser = userRepository.findById(id);
 
         if (checkedUser.isEmpty()) {
-            throw new Exception(String.format("User with ID %s not found", id));
+            throw new EntityNotFoundException(String.format("User with ID %s not found", id));
         }
 
         return checkedUser.get();
@@ -52,7 +53,7 @@ public class UserService {
 
             userRepository.save(updatedUser);
         } catch (Exception e) {
-            throw new Exception(String.format("User with ID %s not found", id));
+            throw new Exception(String.format("User with ID %s not found! Try to update again", id));
         }
     }
 

@@ -3,6 +3,7 @@ package com.example.fullstackproject.services;
 import com.example.fullstackproject.domain.event.Event;
 import com.example.fullstackproject.dtos.event.EventDTO;
 import com.example.fullstackproject.repositories.EventRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,11 +20,11 @@ public class EventService {
         return eventRepository.findAll();
     }
 
-    public Event findEventById(UUID id) throws Exception {
+    public Event findEventById(UUID id) throws EntityNotFoundException {
         Optional<Event> checkedEvent = eventRepository.findById(id);
 
         if (checkedEvent.isEmpty()) {
-            throw new Exception(String.format("Event with ID %s not found", id));
+            throw new EntityNotFoundException(String.format("Event with ID %s not found", id));
         }
 
         return checkedEvent.get();
@@ -43,7 +44,7 @@ public class EventService {
 
             eventRepository.save(updatedEvent);
         } catch (Exception e) {
-            throw new Exception(String.format("Event with ID %s not found", id));
+            throw new Exception(String.format("Event with ID %s not found! Try to update again", id));
         }
     }
 

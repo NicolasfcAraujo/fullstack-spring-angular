@@ -3,6 +3,7 @@ package com.example.fullstackproject.services;
 import com.example.fullstackproject.domain.timeregister.TimeRegister;
 import com.example.fullstackproject.dtos.timeregister.TimeRegisterDTO;
 import com.example.fullstackproject.repositories.TimeRegisterRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,11 +20,11 @@ public class TimeRegisterService {
         return timeRegisterRepository.findAll();
     }
 
-    public TimeRegister findTimeRegisterById(UUID id) throws Exception {
+    public TimeRegister findTimeRegisterById(UUID id) throws EntityNotFoundException {
         Optional<TimeRegister> checkedTimeRegister = timeRegisterRepository.findById(id);
 
         if (checkedTimeRegister.isEmpty()) {
-            throw new Exception(String.format("Time register with ID %s not found", id));
+            throw new EntityNotFoundException(String.format("Time register with ID %s not found", id));
         }
 
         return checkedTimeRegister.get();
@@ -42,7 +43,7 @@ public class TimeRegisterService {
 
             timeRegisterRepository.save(updatedTimeRegister);
         } catch(Exception e) {
-            throw new Exception(String.format("Time register with ID %s not found", id));
+            throw new Exception(String.format("Time register with ID %s not found! Try to update again", id));
         }
     }
 
