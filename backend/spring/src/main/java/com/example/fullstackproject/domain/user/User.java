@@ -1,5 +1,6 @@
 package com.example.fullstackproject.domain.user;
 
+import com.example.fullstackproject.dtos.user.UserDTO;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -10,7 +11,7 @@ import java.util.UUID;
 @Table(name = "users")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
     @CreationTimestamp
     @Column(name = "created_at")
@@ -26,6 +27,20 @@ public class User {
     private String department;
     @Enumerated(EnumType.STRING)
     private UserType type;
+
+    public User(){
+
+    }
+
+    public User(UserDTO data) {
+        this.fullName = data.fullName();
+        this.email = data.email();
+        this.document = data.document();
+        this.password = data.password();
+        this.role = data.role();
+        this.department = data.department();
+        this.type = data.type();
+    }
 
     public UUID getId() {
         return id;

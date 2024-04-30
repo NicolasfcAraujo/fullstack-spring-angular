@@ -1,6 +1,7 @@
 package com.example.fullstackproject.services;
 
 import com.example.fullstackproject.domain.timeregister.TimeRegister;
+import com.example.fullstackproject.domain.user.User;
 import com.example.fullstackproject.dtos.timeregister.TimeRegisterDTO;
 import com.example.fullstackproject.repositories.TimeRegisterRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -16,6 +17,9 @@ public class TimeRegisterService {
     @Autowired
     private TimeRegisterRepository timeRegisterRepository;
 
+    @Autowired
+    private UserService userService;
+
     public List<TimeRegister> findAll() {
         return timeRegisterRepository.findAll();
     }
@@ -30,18 +34,25 @@ public class TimeRegisterService {
         return checkedTimeRegister.get();
     }
 
-    public void saveTimeRegister(TimeRegister timeRegister) {
-        timeRegisterRepository.save(timeRegister);
+    public TimeRegister saveTimeRegister(TimeRegisterDTO timeRegisterDTO) {
+        User user = userService.findUserById(timeRegisterDTO.userId());
+
+        TimeRegister timeRegister = new TimeRegister();
+        timeRegister.setUser(user);
+        timeRegister.setClockIn(timeRegisterDTO.clockIn());
+        timeRegister.setClockOut(timeRegisterDTO.clockOut());
+
+        return timeRegisterRepository.save(timeRegister);
     }
 
-    public void updateTimeRegister(TimeRegisterDTO timeRegister, UUID id) throws Exception {
+    public TimeRegister updateTimeRegister(TimeRegisterDTO timeRegister, UUID id) throws Exception {
         try {
             TimeRegister updatedTimeRegister = findTimeRegisterById(id);
 
             updatedTimeRegister.setClockIn(timeRegister.clockIn());
             updatedTimeRegister.setClockOut(timeRegister.clockOut());
 
-            timeRegisterRepository.save(updatedTimeRegister);
+            return timeRegisterRepository.save(updatedTimeRegister);
         } catch(Exception e) {
             throw new Exception(String.format("Time register with ID %s not found! Try to update again", id));
         }

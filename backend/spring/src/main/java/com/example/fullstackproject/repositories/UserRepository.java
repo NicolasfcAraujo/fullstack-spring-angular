@@ -10,6 +10,8 @@ import java.util.UUID;
 
 public interface UserRepository extends JpaRepository<User, UUID> {
 
-    @Query("SELECT u.fullName, u.department, u.role FROM users")
+    @Query("SELECT new com.example.fullstackproject.dtos.user.UserSummaryDTO(u.fullName, u.department, u.role) FROM users u")
     List<UserSummaryDTO> getAllUsersSummaries();
+
+    List<User> findByIdIn(List<UUID> participantsIds);
 }

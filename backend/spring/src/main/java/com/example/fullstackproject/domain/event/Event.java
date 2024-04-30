@@ -34,6 +34,10 @@ public class Event {
     )
     private List<User> participants;
 
+    public Event() {
+
+    }
+
     public UUID getId() {
         return id;
     }

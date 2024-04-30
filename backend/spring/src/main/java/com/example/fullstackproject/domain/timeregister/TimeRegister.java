@@ -24,6 +24,10 @@ public class TimeRegister {
     @JoinColumn(name = "user_id")
     private User user;
 
+    public TimeRegister() {
+
+    }
+
     public UUID getId() {
         return id;
     }

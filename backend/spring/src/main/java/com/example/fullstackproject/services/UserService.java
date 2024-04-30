@@ -22,7 +22,13 @@ public class UserService {
     }
 
     public List<UserSummaryDTO> findUserSummaries() {
-        return userRepository.getAllUsersSummaries();
+        List<UserSummaryDTO> summaries = userRepository.getAllUsersSummaries();
+        System.out.println(summaries);
+        return summaries;
+    }
+
+    public List<User> findUsersByIdList(List<UUID> participants) {
+        return userRepository.findByIdIn(participants);
     }
 
     public User findUserById(UUID id) throws EntityNotFoundException {
@@ -39,7 +45,13 @@ public class UserService {
         this.userRepository.save(user);
     }
 
-    public void updateUser(UserDTO user, UUID id) throws Exception {
+    public User createUser(UserDTO data) {
+        User newUser = new User(data);
+        this.saveUser(newUser);
+        return newUser;
+    }
+
+    public User updateUser(UserDTO user, UUID id) throws Exception {
         try {
             User updatedUser = findUserById(id);
 
@@ -51,7 +63,9 @@ public class UserService {
             updatedUser.setRole(user.role());
             updatedUser.setType(user.type());
 
-            userRepository.save(updatedUser);
+            this.saveUser(updatedUser);
+
+            return updatedUser;
         } catch (Exception e) {
             throw new Exception(String.format("User with ID %s not found! Try to update again", id));
         }
