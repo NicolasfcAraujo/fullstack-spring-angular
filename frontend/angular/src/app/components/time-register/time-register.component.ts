@@ -8,8 +8,8 @@ import { Component } from '@angular/core';
   styleUrl: './time-register.component.css'
 })
 export class TimeRegisterComponent {
-  date: String
-  hour: String
+  date: string
+  hour: string
 
   constructor(){
     const today: Date = new Date()
