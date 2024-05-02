@@ -14,4 +14,6 @@ public interface UserRepository extends JpaRepository<User, UUID> {
     List<UserSummaryDTO> getAllUsersSummaries();
 
     List<User> findByIdIn(List<UUID> participantsIds);
+
+    User findByEmail(String email);
 }

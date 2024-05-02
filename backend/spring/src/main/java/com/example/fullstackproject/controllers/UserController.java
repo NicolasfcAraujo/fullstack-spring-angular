@@ -2,8 +2,10 @@ package com.example.fullstackproject.controllers;
 
 import com.example.fullstackproject.domain.user.User;
 import com.example.fullstackproject.dtos.user.UserDTO;
+import com.example.fullstackproject.dtos.user.UserLoginDTO;
 import com.example.fullstackproject.dtos.user.UserSummaryDTO;
 import com.example.fullstackproject.services.UserService;
+import org.apache.coyote.BadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,6 +34,11 @@ public class UserController {
     @GetMapping("/{id}")
     public ResponseEntity<User> getUserById(@PathVariable String id) {
         return new ResponseEntity<>(userService.findUserById(UUID.fromString(id)), HttpStatus.OK);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<User> login(@RequestBody UserLoginDTO user) throws Exception {
+        return new ResponseEntity<>(userService.login(user), HttpStatus.OK);
     }
 
     @PostMapping("")
