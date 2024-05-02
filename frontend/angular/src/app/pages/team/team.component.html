@@ -1,1 +1,25 @@
-<p>team works!</p>
+<h1 class=" mb-4">Team</h1>
+<hr>
+<form class=" flex flex-col gap-4 py-4 input-div">
+  <h2>Filter</h2>
+  <section>
+    <div>
+      <label for="search-name">Name</label>
+      <input type="text" placeholder="Name" id="search-name">
+    </div>
+    <div>
+      <label for="search-role">Role</label>
+      <input type="text" placeholder="Role" id="search-role">
+    </div>
+    <div>
+      <label for="search-department">Department</label>
+      <input type="text" placeholder="Department" id="search-department">
+    </div>
+  </section>
+</form>
+<hr>
+<div class=" flex flex-col gap-4 mt-4">
+  <app-employee-card/>
+  <app-employee-card/>
+  <app-employee-card/>
+</div>

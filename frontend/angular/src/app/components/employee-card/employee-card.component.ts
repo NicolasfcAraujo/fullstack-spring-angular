@@ -8,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrl: './employee-card.component.css'
 })
 export class EmployeeCardComponent {
+  fullName: string = "Member Full Name"
+  role: string = "Member"
+  department: string = "Company"
 
+  
 }
