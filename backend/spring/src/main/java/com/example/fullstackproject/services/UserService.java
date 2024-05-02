@@ -2,13 +2,16 @@ package com.example.fullstackproject.services;
 
 import com.example.fullstackproject.domain.user.User;
 import com.example.fullstackproject.dtos.user.UserDTO;
+import com.example.fullstackproject.dtos.user.UserLoginDTO;
 import com.example.fullstackproject.dtos.user.UserSummaryDTO;
 import com.example.fullstackproject.repositories.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
+import org.apache.coyote.BadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -39,6 +42,20 @@ public class UserService {
         }
 
         return checkedUser.get();
+    }
+
+    public User login(UserLoginDTO user) throws Exception {
+        try {
+            User userByEmail = userRepository.findByEmail(user.email());
+
+            if (!Objects.equals(user.password(), userByEmail.getPassword())) {
+                throw new BadRequestException("Email or password incorrect. Try again!");
+            }
+
+            return userByEmail;
+        } catch (Exception e) {
+            throw new Exception("Failed to log the user in. Try again");
+        }
     }
 
     public void saveUser(User user) {
