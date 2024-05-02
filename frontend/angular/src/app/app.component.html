@@ -1,6 +1,10 @@
-<div class=" flex h-svh w-screen poppins">
+<div *ngIf="!isLogin; else login" class=" flex h-svh w-screen poppins">
   <app-menu></app-menu>
   <main class=" flex-1 h-full overflow-y-scroll p-8 page-title">
     <router-outlet />
   </main>
 </div>
+
+<ng-template #login>
+  <router-outlet/>
+</ng-template>

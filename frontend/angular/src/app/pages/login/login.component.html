@@ -1,0 +1,17 @@
+<div class=" w-screen h-svh flex justify-center items-center poppins">
+  <form [formGroup]="loginForm" class="flex flex-col p-4 gap-4 max-w-lg w-screen input-div">
+    <h1 class="text-4xl text-neutral-900"><span class=" text-emerald-500 font-semibold">HR</span> Web</h1>
+    <div>
+      <label for="login-email">Email</label>
+      <input type="email" placeholder="Email" id="login-email" formControlName="email">
+    </div>
+    <div>
+      <label for="login-password">Password</label>
+      <input type="password" placeholder="Password" id="login-password" formControlName="password">
+    </div>
+    <div class=" pt-4">
+      <button (click)="login()" class=" w-full rounded bg-neutral-900 text-white hover:text-emerald-500 duration-200 py-1">{{ loading ? "loading...":"Log In" }}</button>
+      <button (click)="loginAsADM()" class=" w-full rounded bg-emerald-500 text-neutral-900 hover:bg-emerald-400 duration-200 py-1 mt-2">{{ loading ? "loading...":"Log In as Admin (test)" }}</button>
+    </div>
+  </form>
+</div>

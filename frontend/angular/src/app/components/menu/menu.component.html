@@ -1,6 +1,6 @@
 <div class=" w-72 h-full bg-neutral-900 p-8 flex flex-col gap-8">
   <h1 class="text-4xl text-white"><span class=" text-emerald-500 font-semibold">HR</span> Web</h1>
-  <nav class=" flex flex-col gap-6 text-white text-lg font-medium menu-nav">
+  <nav class=" flex flex-col gap-6 text-white text-lg font-medium menu-nav flex-1">
     <a routerLink="" routerLinkActive="nav-active" [routerLinkActiveOptions]="{ exact: true }">
       <i class="fa-solid fa-house"></i>
       Panel
@@ -18,4 +18,5 @@
       Add Member
     </a>
   </nav>
+  <button (click)="logout()" class=" text-red-500"><i class="fa-solid fa-power-off"></i> Log Out</button>
 </div>
