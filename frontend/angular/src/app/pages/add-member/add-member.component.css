@@ -1,0 +1,29 @@
+.input-div div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.input-div label {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.input-div input {
+  padding: 4px 8px;
+  background: rgb(229 229 229);
+  border-radius: 0.25rem;
+}
+
+.input-div section {
+  display: flex;
+  gap: 24px;
+}
+
+.input-div select {
+  padding: 4px 8px;
+  background: rgb(245 245 245);
+  border-radius: 0.25rem;
+  border: 1px solid;
+  border-color: rgb(229 229 229);
+}
