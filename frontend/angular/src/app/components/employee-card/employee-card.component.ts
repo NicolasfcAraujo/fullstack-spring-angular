@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-employee-card',
@@ -8,9 +9,14 @@ import { Component } from '@angular/core';
   styleUrl: './employee-card.component.css'
 })
 export class EmployeeCardComponent {
-  fullName: string = "Member Full Name"
-  role: string = "Member"
-  department: string = "Company"
+  @Input() fullName: string = "Member Full Name"
+  @Input() role: string = "Member"
+  @Input() department: string = "Company"
+  @Input() id: string = "" 
 
-  
+  constructor(private router: Router){}
+
+  userDetails(){
+    this.router.navigateByUrl(`/team/${this.id}`)
+  }
 }
