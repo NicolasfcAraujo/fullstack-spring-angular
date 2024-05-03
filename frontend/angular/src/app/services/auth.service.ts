@@ -52,7 +52,7 @@ export class AuthService {
     this.router.navigateByUrl("/login")
   }
 
-  idAdmin(){
+  isAdmin(){
     return localStorage.getItem("type") == "ADM"
   }
 }

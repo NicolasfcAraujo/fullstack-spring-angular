@@ -1,39 +1,39 @@
 <h1>Add a New Member</h1>
-<form class=" flex flex-col gap-8 mt-8 input-div">
+<form [formGroup]="addMemberForm" class=" flex flex-col gap-8 mt-8 input-div">
   <section>
     <div>
       <label for="name">Name</label>
-      <input type="text" placeholder="Name" id="name">
+      <input type="text" placeholder="Name" id="name" formControlName="fullName">
     </div>
     <div>
       <label for="email">Email</label>
-      <input type="email" placeholder="Email" id="email">
+      <input type="email" placeholder="Email" id="email" formControlName="email">
     </div>
   </section>
 
   <section>
     <div>
       <label for="document">Document</label>
-      <input type="text" placeholder="Document number" id="document">
+      <input type="text" placeholder="Document number" id="document" formControlName="document">
     </div>
     <div>
       <label for="password">Password</label>
-      <input type="password" placeholder="Password" id="password">
+      <input type="password" placeholder="Password" id="password" formControlName="password">
     </div>
   </section>
 
   <section>
     <div>
       <label for="department">Department</label>
-      <input type="text" placeholder="Department" id="department">
+      <input type="text" placeholder="Department" id="department" formControlName="department">
     </div>
     <div>
       <label for="role">Role</label>
-      <input type="text" placeholder="Role" id="role">
+      <input type="text" placeholder="Role" id="role" formControlName="role">
     </div>
     <div>
       <label for="type">Type</label>
-      <select name="type" id="type">
+      <select name="type" id="type" formControlName="type">
         <option value="ADM">Administrator</option>
         <option value="COMMON">Common</option>
       </select>
@@ -41,7 +41,7 @@
   </section>
 </form>
 <div class=" pt-8">
-  <button class=" rounded bg-neutral-200 px-4 py-1 hover:bg-neutral-100 duration-200 border border-neutral-200">
+  <button (click)="createUser()" class=" rounded bg-neutral-200 px-4 py-1 hover:bg-neutral-100 duration-200 border border-neutral-200">
     <i class="fa-solid fa-user-plus"></i> Add Member
   </button>
 </div>
