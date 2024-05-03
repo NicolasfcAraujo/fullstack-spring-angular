@@ -25,7 +25,7 @@ export class AuthService {
 
     $login
       .pipe(
-        retry(1)
+        retry(2)
       )
       .subscribe(value => {
         this.authorize = true
