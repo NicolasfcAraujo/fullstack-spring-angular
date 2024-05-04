@@ -28,6 +28,7 @@ export class AuthService {
         retry(2)
       )
       .subscribe(value => {
+        localStorage.setItem("id", value.id)
         localStorage.setItem("fullName", value.fullName)
         localStorage.setItem("email", value.email)
         localStorage.setItem("document", value.document)
@@ -41,6 +42,7 @@ export class AuthService {
   }
 
   logout() {
+    localStorage.removeItem("id")
     localStorage.removeItem("fullName")
     localStorage.removeItem("email")
     localStorage.removeItem("document")

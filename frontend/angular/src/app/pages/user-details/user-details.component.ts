@@ -2,16 +2,19 @@ import { Component } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { ActivatedRoute } from '@angular/router';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { TimeRegisterListComponent } from '../../components/time-register-list/time-register-list.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-user-details',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, TimeRegisterListComponent],
   templateUrl: './user-details.component.html',
   styleUrl: './user-details.component.css'
 })
 export class UserDetailsComponent {
 
+  userId: string
   loading: boolean = false
   detailsForm = new FormGroup({
     fullName: new FormControl("Full Name"),
@@ -24,6 +27,8 @@ export class UserDetailsComponent {
   })
 
   constructor(private userService: UserService, private route: ActivatedRoute){
+    this.userId = route.snapshot.paramMap.get("id") as string
+    console.log(route.snapshot.paramMap.get("id") as string)
     userService.findUser(route.snapshot.paramMap.get("id") as string).subscribe(value => {
       this.detailsForm.patchValue({
         fullName: value.fullName,

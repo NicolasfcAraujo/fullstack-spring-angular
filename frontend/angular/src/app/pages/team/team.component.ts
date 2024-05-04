@@ -18,7 +18,6 @@ export class TeamComponent implements OnInit {
   $members: Observable<User[]>
 
   constructor(private userService: UserService) {
-    
     this.$members = userService.findAll()
   }
 
