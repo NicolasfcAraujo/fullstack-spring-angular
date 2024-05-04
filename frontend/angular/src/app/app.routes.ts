@@ -13,7 +13,7 @@ export const routes: Routes = [
   { path: "profile", component: ProfileComponent, title: "HR Web | Profile", canActivate: [ authGuard ] },
   { path: "team", component: TeamComponent, title: "HR Web | Team", canActivate: [ authGuard ]},
   { path: "team/:id", component: UserDetailsComponent, title: "HT Web | Member Details", canActivate: [ detailsGuard ]},
-  { path: "add-member", component: AddMemberComponent, title: "HR Web | Add Member", canActivate: [ authGuard ] },
+  { path: "add-member", component: AddMemberComponent, title: "HR Web | Add Member", canActivate: [ authGuard, detailsGuard ] },
   { path: "login", component: LoginComponent, title: "HR Web | Login" },
   { path: "**", redirectTo: "" }
 ];

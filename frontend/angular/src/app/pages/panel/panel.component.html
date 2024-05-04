@@ -6,8 +6,83 @@
   </section>
   <section class=" flex flex-col gap-4">
     <h2>Events</h2>
-    <app-event-card></app-event-card>
-    <app-event-card></app-event-card>
-    <app-event-card></app-event-card>
+    <app-event-card 
+      *ngFor="let event of events"
+      [title]="event.title"
+      [host]="event.host.fullName"
+      [date]="event.eventStart"
+      [start]="event.eventStart"
+      [end]="event.eventEnd"
+      [id]="event.id"
+      (itemDeleted)="updateEvents($event)"
+      (click)="openDetails(event.id)"
+    />
+    <div class=" flex p-6">
+      <button *ngIf="isADM" (click)="openAddEvent()" class="bg-neutral-900 text-white hover:text-emerald-500 text-base py-1 px-3 rounded duration-200">Add Event</button>
+    </div>
   </section>
+</div>
+
+<div *ngIf="isAdd" class="fixed top-0 left-0 w-screen h-svh flex justify-center items-center z-10">
+  <div class=" bg-black opacity-75 absolute top-0 left-0 w-full h-full"></div>
+  <div class="relative bg-white rounded-md max-w-3xl w-full h-96 mx-4 z-10 p-4 overflow-y-scroll">
+    <form [formGroup]="eventForm" class=" flex flex-col gap-4 input-div">
+      <h2 class=" flex justify-between">Add Event <button (click)="closeAddEvent()"><i class="fa-solid fa-xmark"></i></button></h2>
+
+      <section>
+        <div>
+          <label for="title">Title</label>
+          <input type="text" placeholder="Title" id="title" class=" w-80 max-w-xs" formControlName="title">
+        </div>
+      </section>
+
+      <section>
+        <div>
+          <label for="start">Start</label>
+          <input type="datetime-local" placeholder="Event Start" id="start" formControlName="eventStart">
+        </div>
+        <div>
+          <label for="end">End</label>
+          <input type="datetime-local" placeholder="Event End" id="end" formControlName="eventEnd">
+        </div>
+      </section>
+
+      <section>
+        <div>
+          <label for="participants">Participants</label>
+          <fieldset class=" flex flex-col gap-1 bigger-label">
+            <label *ngFor="let user of users" [for]="user.id">
+              <input (click)="changeParticipants(user.id)" type="checkbox" [checked]="participants.includes(user.id)" [id]="user.id" value="user.id"> {{ user.role }} | {{ user.fullName }}
+            </label>
+          </fieldset>
+        </div>
+      </section>
+      <div class=" pt-4 w-fit">
+        <button (click)="addEvent()" class="bg-neutral-900 text-white hover:text-emerald-500 text-base py-1 px-3 rounded duration-200">Add Event</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div *ngIf="selectedEvent" class="fixed top-0 left-0 w-screen h-svh flex justify-center items-center z-10">
+  <div class=" bg-black opacity-75 absolute top-0 left-0 w-full h-full"></div>
+  <div class="relative bg-white rounded-md max-w-3xl w-full h-96 mx-4 z-10 p-4 overflow-y-scroll">
+    <h2 class=" flex justify-between">{{ selectedEvent.title }} <button (click)="closeDetails()"><i class="fa-solid fa-xmark"></i></button></h2>
+    <h3>{{selectedEvent.host.fullName}}</h3>
+    <div class=" my-4 flex items-center gap-4">
+      <i class="fa-solid fa-clock"></i>
+      <div class=" flex items-center gap-1">
+        <div class=" rounded-full bg-emerald-500 w-2 h-2"></div>
+        {{ selectedEvent.eventStart | date:"yyyy-LL-dd HH:mm:ss" }}
+      </div>
+      <div class=" flex items-center gap-1">
+        <div class=" rounded-full bg-emerald-600 w-2 h-2"></div>
+        {{ selectedEvent.eventEnd | date:"yyyy-LL-dd HH:mm:ss" }}
+      </div>
+    </div>
+    <h3 class="mb-4">Participants</h3>
+    <ul>
+      <li *ngFor="let user of selectedEvent.participants"><strong>{{ user.role }}</strong> | {{ user.fullName }}</li>
+    </ul>
+  </div>
 </div>

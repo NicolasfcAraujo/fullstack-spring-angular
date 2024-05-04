@@ -13,7 +13,7 @@
       <i class="fa-solid fa-people-group"></i>
       Team
     </a>
-    <a routerLink="add-member" routerLinkActive="nav-active" >
+    <a *ngIf="isADM" routerLink="add-member" routerLinkActive="nav-active" >
       <i class="fa-solid fa-user-plus"></i>
       Add Member
     </a>

@@ -64,3 +64,8 @@
   border: 1px solid;
   border-color: rgb(229 229 229);
 }
+
+.bigger-label label {
+  font-size: 1rem;
+  line-height: 1.25rem;
+}
