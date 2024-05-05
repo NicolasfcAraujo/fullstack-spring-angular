@@ -28,7 +28,6 @@ export class UserDetailsComponent {
 
   constructor(private userService: UserService, private route: ActivatedRoute){
     this.userId = route.snapshot.paramMap.get("id") as string
-    console.log(route.snapshot.paramMap.get("id") as string)
     userService.findUser(route.snapshot.paramMap.get("id") as string).subscribe(value => {
       this.detailsForm.patchValue({
         fullName: value.fullName,
