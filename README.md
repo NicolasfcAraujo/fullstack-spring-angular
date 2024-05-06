@@ -49,7 +49,7 @@ HR Web is a simplified HR software
 
 - Here in this repository, go to "<> code" and download zip
 
-    <img src="https://raw.githubusercontent.com/NicolasfcAraujo/fullstack-spring-angular/frontend/assets/installation/1-download.png?token=GHSAT0AAAAAACODOJCE77EAQGAA5EUHNOXKZRYWYZA" width="320" alt="code download"/>
+    <img src="https://github.com/NicolasfcAraujo/fullstack-spring-angular/blob/main/assets/installation/1-download.png?raw=true" width="320" alt="code download"/>
   
 #### 1.4 Run Docker Compose
 
@@ -79,7 +79,7 @@ HR Web is a simplified HR software
 
 - Here in this repository, go to "<> code" and download zip
 
-    <img src="https://raw.githubusercontent.com/NicolasfcAraujo/fullstack-spring-angular/frontend/assets/installation/1-download.png?token=GHSAT0AAAAAACODOJCE77EAQGAA5EUHNOXKZRYWYZA" width="320" alt="code download"/>
+    <img src="https://github.com/NicolasfcAraujo/fullstack-spring-angular/blob/main/assets/installation/1-download.png?raw=true" width="320" alt="code download"/>
 
 #### 2.5 Unzip the folder
 
@@ -103,7 +103,7 @@ HR Web is a simplified HR software
 
 - When you access it for the first time, you will see the login page. You can click on "Log In as Admin (test)" to automatically create your adm account and have total access to the app features.
 
-![login page](https://raw.githubusercontent.com/NicolasfcAraujo/fullstack-spring-angular/frontend/assets/overview/1-login.png?token=GHSAT0AAAAAACODOJCEVDXZJD7VRYHAN4OCZRYYFKA)
+![login page](https://github.com/NicolasfcAraujo/fullstack-spring-angular/blob/main/assets/overview/1-login.png?raw=true)
 
 - Once logged, you can
     - Clock In/Out,
@@ -111,4 +111,4 @@ HR Web is a simplified HR software
     - View your data and others members' data
     - Add new members to the team
 
-![main panel](https://raw.githubusercontent.com/NicolasfcAraujo/fullstack-spring-angular/frontend/assets/overview/5-eventadded.png?token=GHSAT0AAAAAACODOJCEGBXBF46IPY7VWGYSZRYZNIQ)
+![main panel](https://github.com/NicolasfcAraujo/fullstack-spring-angular/blob/main/assets/overview/5-eventadded.png?raw=true)
