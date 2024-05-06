@@ -1,0 +1,15 @@
+services:
+  backend:
+    build: "./backend/spring"
+    container_name: fullstack-backend 
+    restart: always
+    ports:
+      - "8080:8080"
+  frontend:
+    build: "./frontend/angular"
+    container_name: fullstack-frontend 
+    restart: always
+    ports:
+      - "4200:4200"
+    depends_on:
+      - backend
