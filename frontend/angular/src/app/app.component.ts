@@ -1,13 +1,22 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
+import { MenuComponent } from './components/menu/menu.component';
+import { CommonModule, Location } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [CommonModule, RouterOutlet, MenuComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'fullstack-angular';
+  isLogin: boolean = false
+
+  constructor(private location: Location, private router: Router) {
+    router.events
+      .subscribe(() => {
+        this.isLogin = location.path().includes("/login")
+      })
+  }
 }

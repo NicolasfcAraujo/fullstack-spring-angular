@@ -1,0 +1,39 @@
+<div class=" flex gap-4">
+  <div *ngIf="!hasClockIn" class="rounded-lg shadow-md overflow-hidden w-60 h-56 flex flex-col">
+    <div class=" p-2 bg-emerald-500 font-medium">{{ date }}</div>
+    <div class=" flex flex-col p-2 flex-1">
+      <div class=" pt-4 flex-1 text-center text-emerald-500 text-5xl font-semibold">
+        {{ hour }}
+      </div>
+      <button (click)="setClockIn()" class=" rounded p-1 bg-emerald-500">Set Clock In</button>
+    </div>
+  </div>
+
+  <div *ngIf="hasClockIn" class="rounded-lg shadow-md overflow-hidden w-60 h-fit flex flex-col">
+    <div class=" p-2 bg-emerald-500 font-medium">{{ date }}</div>
+    <div class=" flex flex-col p-2 flex-1">
+      <div class=" py-4 flex-1 text-center text-emerald-500 text-5xl font-semibold">
+        {{ timeRegister.clockIn | date:"HH:mm:ss" }}
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!hasClockOut" class="rounded-lg shadow-md overflow-hidden w-60 h-56 flex flex-col">
+    <div class=" p-2 bg-emerald-600 font-medium">{{ date }}</div>
+    <div class=" flex flex-col p-2 flex-1">
+      <div class=" pt-4 flex-1 text-center text-emerald-600 text-5xl font-semibold">
+        {{ hour }}
+      </div>
+      <button [disabled]="!hasClockIn" (click)="setClockOut()" class=" rounded p-1 bg-emerald-600">Set Clock Out</button>
+    </div>
+  </div>
+
+  <div *ngIf="hasClockOut" class="rounded-lg shadow-md overflow-hidden w-60 h-fit flex flex-col">
+    <div class=" p-2 bg-emerald-600 font-medium">{{ date }}</div>
+    <div class=" flex flex-col p-2 flex-1">
+      <div class=" py-4 flex-1 text-center text-emerald-600 text-5xl font-semibold">
+        {{ timeRegister.clockOut | date:"HH:mm:ss" }}
+      </div>
+    </div>
+  </div>
+</div>

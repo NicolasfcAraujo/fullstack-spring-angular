@@ -1,0 +1,29 @@
+<h1 class=" mb-4">Team</h1>
+<hr>
+<form [formGroup]="filterForm" class=" flex flex-col gap-4 py-4 input-div">
+  <h2>Filter</h2>
+  <section>
+    <div>
+      <label for="search-name">Name</label>
+      <input type="text" placeholder="Name" id="search-name" formControlName="name">
+    </div>
+    <div>
+      <label for="search-role">Role</label>
+      <input type="text" placeholder="Role" id="search-role" formControlName="role">
+    </div>
+    <div>
+      <label for="search-department">Department</label>
+      <input type="text" placeholder="Department" id="search-department" formControlName="department">
+    </div>
+  </section>
+</form>
+<hr>
+<div class=" flex flex-col gap-4 mt-4">
+  <app-employee-card 
+    *ngFor="let member of members | filterMember:filterForm.value.name!:filterForm.value.role!:filterForm.value.department!" 
+    [fullName]="member.fullName" 
+    [role]="member.role"
+    [department]="member.department"
+    [id]="member.id"
+  />
+</div>

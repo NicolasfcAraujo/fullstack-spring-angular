@@ -1,0 +1,40 @@
+<h1>Profile</h1>
+<form [formGroup]="profileForm" class=" flex flex-col gap-8 mt-8 input-div">
+  <section>
+    <div>
+      <label for="name">Name</label>
+      <input readonly type="text" placeholder="Name" id="name" formControlName="fullName">
+    </div>
+    <div>
+      <label for="email">Email</label>
+      <input readonly type="email" placeholder="Email" id="email" formControlName="email">
+    </div>
+  </section>
+
+  <section>
+    <div>
+      <label for="document">Document</label>
+      <input readonly type="text" placeholder="Document number" id="document" formControlName="document">
+    </div>
+    <div>
+      <label for="password">Password</label>
+      <input readonly type="password" placeholder="Password" id="password" formControlName="password">
+    </div>
+  </section>
+
+  <section>
+    <div>
+      <label for="department">Department</label>
+      <input readonly type="text" placeholder="Department" id="department" formControlName="department">
+    </div>
+    <div>
+      <label for="role">Role</label>
+      <input readonly type="text" placeholder="Role" id="role" formControlName="role">
+    </div>
+    <div>
+      <label for="type">Type</label>
+      <input readonly name="type" id="type" formControlName="type">
+    </div>
+  </section>
+</form>
+<app-time-register-list [userId]="userId"/>
